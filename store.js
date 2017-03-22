@@ -1,4 +1,4 @@
-
+//limit price input to float with 2 decimal places
 
 var sget = require("sget");
 
@@ -75,10 +75,20 @@ var addItem = function() {
 	storeArray.push(newItem); 
 	console.log(storeArray);
 
+	mainMenu();
 };
 
 var deleteItem = function() {
-
+	console.log(storeArray);
+	var item = sget(userMessages.description).trim();
+	
+	console.log(item);
+	for (var x in storeArray) {
+	    if (item == storeArray[x]){
+	     console.log(storeArray[item]);
+	     //want to play again
+	    }
+	}    
 };
 
 var searchItem = function() {
@@ -115,6 +125,10 @@ var sleep = function(milliseconds) {
 //-------------------------------------------------------
 
 var runProgram = function() {
+	var item1 = new Product("flowers", 2.99, 3);
+	var item2 = new Product("water bottles", 5.00, 2);
+	storeArray.push(item1);
+	storeArray.push(item2);
 	printMenu();
 	mainMenu();
 }();
