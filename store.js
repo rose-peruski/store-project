@@ -18,18 +18,18 @@ var mainMenuMessages = {
 					delete:"2. To delete a product or press 2 ",
 					search: "3. To search for a product press 3",
 					modify: "4. To modify the amount of stock for a product press 4 ",
-					description: "5. To modify a product's description, press 5",
+					product: "5. To modify a product's description, press 5",
 					exit: "6. To exit, type 'exit' or press 6 "	
 
 					};
 
 var userMessages= { 
-					win: "Congrats, you're s-m-r-t smart!",
-					lose: "You have exceeded your guess limit. The word was ",
-					invalid: "Invalid entry, please try again",
-					playAgain: "To play again, press 1, to exit press 2."
+					description: "Enter product description:",
+					price: "Enter product price: ",
+					amount: "Enter number of items available: ",
+					
+					};
 
-					}
 var printMenu = function() {
     for (var key in mainMenuMessages) {
       console.log(mainMenuMessages[key]);
@@ -67,6 +67,8 @@ var mainMenu = function() {
 };
 
 var addItem = function() {
+	var userDescription = sget()
+	var newItem = new Item () 
 
 };
 
