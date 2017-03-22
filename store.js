@@ -1,8 +1,12 @@
-//limit price input to float with 2 decimal places
+/* TO DO
+-limit price input to float with 2 decimal places
+-userinput to lowercase
+*/
 
 var sget = require("sget");
 
 var storeArray = [];
+var userDescription;
 
 function Product(description, price, number) {
 	this.description=description;
@@ -65,10 +69,15 @@ var mainMenu = function() {
 		}
 
 };
+var getDescription = function() {
+	userDescription = sget(userMessages.description).trim();
+	userDescription= userDescription.toLowerCase();
+};
+
 
 var addItem = function() {
 	viewProducts();
-	var userDescription = sget(userMessages.description).trim();
+	getDescription();
 	var userPrice = sget(userMessages.price).trim();
 	var userInventory = sget(userMessages.inventory).trim();
 
@@ -82,6 +91,7 @@ var addItem = function() {
 var deleteItem = function() {
 	console.log(storeArray);
 	var item = sget(userMessages.description).trim();
+		item= item.toLowerCase();
 	
 	for (var i = 0; i < storeArray.length; i++) {
 		if (storeArray[i].description == item) {
@@ -97,7 +107,8 @@ var deleteItem = function() {
 };
 
 var searchItem = function() {
-
+	// var
+	// storeArray.find()
 };
 
 var modifyStock = function() {
