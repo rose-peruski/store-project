@@ -74,12 +74,30 @@ var getDescription = function() {
 	userDescription= userDescription.toLowerCase();
 };
 
+var getPrice = function() {
+	userPrice = sget(userMessages.price).trim();
+	userPrice= userPrice.toLowerCase();
+};
+
+var getInventory = function() {
+	userInventory = sget(userMessages.inventory).trim();
+	userInventory= userInventory.toLowerCase();
+};
+
+var viewProducts= function() {
+	console.log("List of Products in the store");
+	for (var i=0; i<storeArray.length; i++) {
+		console.log("Product: " + storeArray[i].description);
+	}
+
+};
 
 var addItem = function() {
 	viewProducts();
 	getDescription();
-	var userPrice = sget(userMessages.price).trim();
-	var userInventory = sget(userMessages.inventory).trim();
+	getPrice();
+	getInventory();
+	
 
 	var newItem = new Product (userDescription, userPrice, userInventory);
 	storeArray.push(newItem); 
@@ -119,9 +137,7 @@ var modifyDescription = function() {
 
 };
 
-var viewProducts= function() {
 
-};
 var exitProgram= function() {
 	console.log("Thank you for being patient with my clunky program.");
 	process.exit();
@@ -152,7 +168,9 @@ var runProgram = function() {
 	var item2 = new Product("water bottles", 5.00, 2);
 	storeArray.push(item1);
 	storeArray.push(item2);
+	
 	printMenu();
+	
 	mainMenu();
 }();
 
