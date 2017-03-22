@@ -82,13 +82,17 @@ var deleteItem = function() {
 	console.log(storeArray);
 	var item = sget(userMessages.description).trim();
 	
-	console.log(item);
-	for (var x in storeArray) {
-	    if (item == storeArray[x]){
-	     console.log(storeArray[item]);
-	     //want to play again
-	    }
-	}    
+	for (var i = 0; i < storeArray.length; i++) {
+		if (storeArray[i].description == item) {
+			storeArray.splice(i, 1);
+			break;
+		}
+
+		if (i == storeArray.length-1) {
+			console.log("Event not found.");
+		}
+	}
+	console.log(storeArray);
 };
 
 var searchItem = function() {
