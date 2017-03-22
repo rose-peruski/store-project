@@ -4,7 +4,7 @@ var sget = require("sget");
 
 var storeArray = [];
 
-function Items(description, price, number) {
+function Product(description, price, number) {
 	this.description=description;
 	this.price=price;
 	this.number=number;
@@ -26,7 +26,7 @@ var mainMenuMessages = {
 var userMessages= { 
 					description: "Enter product description:",
 					price: "Enter product price: ",
-					amount: "Enter number of items available: ",
+					inventory: "Enter number of items available: ",
 					
 					};
 
@@ -67,8 +67,13 @@ var mainMenu = function() {
 };
 
 var addItem = function() {
-	var userDescription = sget()
-	var newItem = new Item () 
+	var userDescription = sget(userMessages.description).trim();
+	var userPrice = sget(userMessages.price).trim();
+	var userInventory = sget(userMessages.inventory).trim();
+
+	var newItem = new Product (userDescription, userPrice, userInventory);
+	storeArray.push(newItem); 
+	console.log(storeArray);
 
 };
 
@@ -111,6 +116,7 @@ var sleep = function(milliseconds) {
 
 var runProgram = function() {
 	printMenu();
+	mainMenu();
 }();
 
 
