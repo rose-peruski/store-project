@@ -67,6 +67,7 @@ var mainMenu = function() {
 };
 
 var addItem = function() {
+	viewProducts();
 	var userDescription = sget(userMessages.description).trim();
 	var userPrice = sget(userMessages.price).trim();
 	var userInventory = sget(userMessages.inventory).trim();
@@ -107,6 +108,13 @@ var modifyDescription = function() {
 
 };
 
+var viewProducts= function() {
+
+};
+var exitProgram= function() {
+	console.log("Thank you for being patient with my clunky program.");
+	process.exit();
+};
 
 
 //----------------HELPFUL TOOLS---------------------------
