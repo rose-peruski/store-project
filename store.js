@@ -2,6 +2,12 @@ var sget = require("sget");
 
 var storeArray = [];
 
+function Items(description, price, number) {
+	this.description=description;
+	this.price=price;
+	this.number=number;
+};
+
 var mainMenuMessages = {
 					welcome: "\n**********************************************************************\n" +
 								"                               Hangman         " +
@@ -58,7 +64,7 @@ var deleteItem = function() {
 var searchItem = function() {
 
 };
-					
+
 
 //----------------HELPFUL TOOLS---------------------------
 
