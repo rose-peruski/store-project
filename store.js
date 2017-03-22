@@ -10,12 +10,14 @@ function Items(description, price, number) {
 
 var mainMenuMessages = {
 					welcome: "\n**********************************************************************\n" +
-								"                               Hangman         " +
+								"                                       " +
 								"\n**********************************************************************\n",
-					guess: "1. To guess a letter, type 'guess' or press 1 ",
-					wrong:"2. To view wrong guesses made, type 'view' or press 2 ",
-					hints: "3. To view a hint, type 'hint' or press 3",
-					exit: "4. To exit, type 'exit' or press 4 "	
+					add: "1. To add a product, press 1 ",
+					delete:"2. To delete a product or press 2 ",
+					search: "3. To search for a product press 3",
+					modify: "4. To modify the amount of stock for a product press 4 ",
+					description: "5. To modify a product's description, press 5",
+					exit: "6. To exit, type 'exit' or press 6 "	
 
 					};
 
@@ -26,6 +28,11 @@ var userMessages= {
 					playAgain: "To play again, press 1, to exit press 2."
 
 					}
+var printMenu = function() {
+    for (var key in mainMenuMessages) {
+      console.log(mainMenuMessages[key]);
+    }
+};
 
 var mainMenu = function() {
 	//present user with options 
@@ -84,5 +91,9 @@ var sleep = function(milliseconds) {
 };
 
 //-------------------------------------------------------
+
+var runProgram = function() {
+	printMenu();
+}();
 
 
