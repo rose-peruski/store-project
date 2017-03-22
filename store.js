@@ -1,3 +1,5 @@
+
+
 var sget = require("sget");
 
 var storeArray = [];
@@ -42,14 +44,18 @@ var mainMenu = function() {
 	printMenu();
 	var userSelection = sget("Make your selection:").trim();
 		userSelection=userSelection.toLowerCase();
-		if(userSelection=='guess' || userSelection==1 ) {
-			makeGuess();
-		} else if (userSelection=='view' || userSelection==2) {
-			viewWrongGuess();
-		} else if (userSelection=='hint' || userSelection==3) {
-			getHint();
+		if(userSelection==1 ) {
+			addItem();
+		} else if (userSelection==2) {
+			deleteItem();
+		} else if (userSelection==3) {
+			searchItem();
+		} else if (userSelection==4) {
+			modifyStock();
+		} else if (userSelection==5) {
+			modifyDescription();		
 	
-		} else if (userSelection=='exit' || userSelection==4) {
+		} else if (userSelection=='exit' || userSelection==6) {
 			exitProgram();
 		
 		}else {
@@ -71,6 +77,15 @@ var deleteItem = function() {
 var searchItem = function() {
 
 };
+
+var modifyStock = function() {
+
+};
+
+var modifyDescription = function() {
+
+};
+
 
 
 //----------------HELPFUL TOOLS---------------------------
