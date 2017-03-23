@@ -92,9 +92,9 @@ var getInventory = function() {
 var viewProducts= function() {
 	console.log("List of Products in the store");
 	for (var i=0; i<storeArray.length; i++) {
-		console.log("Product: " + storeArray[i].description);
+		console.log("Product: " + storeArray[i].description );
 	}
-
+	console.log("\n");
 };
 
 var viewStore = function() {
@@ -148,18 +148,18 @@ var deleteItem = function() {
 		}
 	}
 	console.log(storeArray);
-	returnToMain();
+	deleteOneMore();
 };
 
-var addOneMore = function() {
-	var addAgain = sget("To add another item, press 1. To return to main menu type (m)enu").trim();
-			if (addAgain==1) {
-				addItem();
-			} else if (addAgain== "m" || addAgain == "menu") {
+var deleteOneMore = function() {
+	var deleteAgain = sget("To delete another item, press 1. To return to main menu type (m)enu").trim();
+			if (deleteAgain==1) {
+				deleteItem();
+			} else if (deleteAgain== "m" || deleteAgain == "menu") {
 				mainMenu();
 			} else {
 				console.log(userMessages.invalid);
-				addOneMore();
+				deleteOneMore();
 			}
 };		
 
@@ -177,8 +177,19 @@ var searchItem = function() {
 
 	}
 
-	returnToMain();
+	oneMoreTime();
 };
+var oneMoreTime = function() {
+	var item = sget("To make another entry press 1, to go back to the menu type menu or (m)").trim();
+			if (item==1) {
+				searchItem();
+			} else if (item== "m" || item == "menu") {
+				mainMenu();
+			} else {
+				console.log(userMessages.invalid);
+				oneMoreTime();
+			}
+};		
 
 var modifyStock = function() {
 	getDescription();
@@ -240,15 +251,7 @@ var wipeScreen = function () {
   return process.stdout.write('\033c');
 };
 
-//sleep timer
-var sleep = function(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-};
+
 
 var returnToMain = function () {
 	var returnToMain = sget("\nPress any key to return to main menu when ready.").trim();
