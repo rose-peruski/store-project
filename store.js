@@ -7,6 +7,8 @@ var sget = require("sget");
 
 var storeArray = [];
 var userDescription;
+var userPrice;
+var userInventory;
 
 function Product(description, price, number) {
 	this.description=description;
@@ -31,7 +33,7 @@ var userMessages= {
 					description: "Enter product description:",
 					price: "Enter product price: ",
 					inventory: "Enter number of items available: ",
-					
+					productNotFound: "Product not found"
 					};
 
 var printMenu = function() {
@@ -107,26 +109,32 @@ var addItem = function() {
 };
 
 var deleteItem = function() {
-	console.log(storeArray);
-	var item = sget(userMessages.description).trim();
-		item= item.toLowerCase();
+	viewProducts();
+	getDescription();
 	
 	for (var i = 0; i < storeArray.length; i++) {
-		if (storeArray[i].description == item) {
+		if (storeArray[i].description == userDescription) {
 			storeArray.splice(i, 1);
 			break;
 		}
 
 		if (i == storeArray.length-1) {
-			console.log("Event not found.");
+			console.log(userMessages.productNotFound);
 		}
 	}
 	console.log(storeArray);
 };
 
 var searchItem = function() {
-	// var
-	// storeArray.find()
+	getDescription();
+	var search = storeArray.find(userDescription);
+
+	if (search == true) {
+		console.log("You have " + storeArray[search].description + " " + storeArray[search].number);
+	}
+	else {
+		console.log(userMessages.productNotFound);
+	}
 };
 
 var modifyStock = function() {
