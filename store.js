@@ -132,23 +132,19 @@ var deleteItem = function() {
 
 var searchItem = function() {
 	getDescription();
+	// var search = sget("\nWhat are you looking for?").trim();
+	// search = search.toLowerCase();
 
-	for (var i = 0; i < storeArray.length; i++) {
-		if (storeArray[i].description == userDescription) {
-			console.log("You have " + storeArray[i].number + " " + storeArray[i].description);
-			break;
-		}
-
-		else {
-			console.log(userMessages.productNotFound);
-		}
+	function checkArray (item) {
+		return item.description == userDescription;
 	}
+	
+	console.log(storeArray.find(checkArray));
 	returnToMain();
 };
 
 var modifyStock = function() {
-	getDescription();
-	console.log()
+	
 };
 
 var modifyDescription = function() {
