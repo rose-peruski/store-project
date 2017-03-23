@@ -1,6 +1,6 @@
 /* TO DO
 -limit price input to float with 2 decimal places
--userinput to lowercase
+
 */
 
 var sget = require("sget");
@@ -25,7 +25,8 @@ var mainMenuMessages = {
 					search: "3. To search for a product press 3",
 					modify: "4. To modify the amount of stock for a product press 4 ",
 					product: "5. To modify a product's description, press 5",
-					exit: "6. To exit, type 'exit' or press 6 "	
+					view: "6. To see the entire stor, press 6",
+					exit: "6. To exit, type 'exit' or press 7"	
 
 					};
 
@@ -59,9 +60,10 @@ var mainMenu = function() {
 		} else if (userSelection==4) {
 			modifyStock();
 		} else if (userSelection==5) {
-			modifyDescription();		
-	
-		} else if (userSelection=='exit' || userSelection==6) {
+			modifyDescription();
+		} else if (userSelection==6) {			
+			viewStore();
+		} else if (userSelection=='exit' || userSelection==7) {
 			exitProgram();
 		
 		}else {
@@ -93,6 +95,10 @@ var viewProducts= function() {
 	}
 
 };
+
+var viewStore = function() {
+
+}
 
 var addItem = function() {
 	viewProducts();
