@@ -25,7 +25,7 @@ var mainMenuMessages = {
 					search: "3. To search for a product press 3",
 					modify: "4. To modify the amount of stock for a product press 4 ",
 					product: "5. To modify a product's description, press 5",
-					view: "6. To see the entire stor, press 6",
+					view: "6. To see the entire store, press 6",
 					exit: "6. To exit, type 'exit' or press 7"	
 
 					};
@@ -97,8 +97,12 @@ var viewProducts= function() {
 };
 
 var viewStore = function() {
+	for (var i=0; i<storeArray.length; i++) {
+		console.log((i+1) + ". " + "Description: " + storeArray[i].description + " Price: " + storeArray[i].price + " Inventory Amount: " + storeArray[i].number );
+	}
+	returnToMain();
+};
 
-}
 
 var addItem = function() {
 	viewProducts();
@@ -109,9 +113,9 @@ var addItem = function() {
 
 	var newItem = new Product (userDescription, userPrice, userInventory);
 	storeArray.push(newItem); 
-	console.log(storeArray)
+	console.log(storeArray);
 	console.log("Product added");
-
+	
 	returnToMain();
 };
 
