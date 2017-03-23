@@ -34,7 +34,8 @@ var userMessages= {
 					description: "Enter product description:",
 					price: "Enter product price: ",
 					inventory: "Enter number of items available: ",
-					productNotFound: "Product not found"
+					productNotFound: "Product not found",
+					invalid: "Invalid entry"
 					};
 
 var printMenu = function() {
@@ -115,9 +116,22 @@ var addItem = function() {
 	storeArray.push(newItem); 
 	console.log(storeArray);
 	console.log("Product added");
+	addOneMore();
 
-	returnToMain();
+	
 };
+
+var addOneMore = function() {
+	var addAgain = sget("To add another item, press 1. To return to main menu type (m)enu").trim();
+			if (addAgain==1) {
+				addItem();
+			} else if (addAgain== "m" || addAgain == "menu") {
+				mainMenu();
+			} else {
+				console.log(userMessages.invalid);
+				addOneMore();
+			}
+};		
 
 var deleteItem = function() {
 	viewProducts();
@@ -137,6 +151,17 @@ var deleteItem = function() {
 	returnToMain();
 };
 
+var addOneMore = function() {
+	var addAgain = sget("To add another item, press 1. To return to main menu type (m)enu").trim();
+			if (addAgain==1) {
+				addItem();
+			} else if (addAgain== "m" || addAgain == "menu") {
+				mainMenu();
+			} else {
+				console.log(userMessages.invalid);
+				addOneMore();
+			}
+};		
 
 var searchItem = function() {
 	getDescription();
