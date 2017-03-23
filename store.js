@@ -103,9 +103,10 @@ var addItem = function() {
 
 	var newItem = new Product (userDescription, userPrice, userInventory);
 	storeArray.push(newItem); 
-	console.log(storeArray);
+	console.log(storeArray)
+	console.log("Product added");
 
-	mainMenu();
+	returnToMain();
 };
 
 var deleteItem = function() {
@@ -124,21 +125,30 @@ var deleteItem = function() {
 	}
 	console.log(storeArray);
 };
+// var checkStoreArray = function(product) {
+// 	getDescription();
+// 	return product.storeArray == userDescription;
+// };
 
 var searchItem = function() {
 	getDescription();
-	var search = storeArray.find(userDescription);
 
-	if (search == true) {
-		console.log("You have " + storeArray[search].description + " " + storeArray[search].number);
+	for (var i = 0; i < storeArray.length; i++) {
+		if (storeArray[i].description == userDescription) {
+			console.log("You have " + storeArray[i].number + " " + storeArray[i].description);
+			break;
+		}
+
+		else {
+			console.log(userMessages.productNotFound);
+		}
 	}
-	else {
-		console.log(userMessages.productNotFound);
-	}
+	returnToMain();
 };
 
 var modifyStock = function() {
-
+	getDescription();
+	console.log()
 };
 
 var modifyDescription = function() {
@@ -169,17 +179,21 @@ var sleep = function(milliseconds) {
     }
 };
 
+var returnToMain = function () {
+	var returnToMain = sget("\nPress any key to return to main menu when ready.").trim();
+	mainMenu();
+};
+
 //-------------------------------------------------------
+
 
 var runProgram = function() {
 	var item1 = new Product("flowers", 2.99, 3);
-	var item2 = new Product("water bottles", 5.00, 2);
+	var item2 = new Product("water", 5.00, 2);
 	storeArray.push(item1);
 	storeArray.push(item2);
 	
 	printMenu();
-	
 	mainMenu();
 }();
-
 
