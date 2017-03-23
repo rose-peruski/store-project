@@ -125,32 +125,41 @@ var deleteItem = function() {
 	}
 	console.log(storeArray);
 };
-// var checkStoreArray = function(product) {
-// 	getDescription();
-// 	return product.storeArray == userDescription;
-// };
+
 
 var searchItem = function() {
 	getDescription();
-	// var search = sget("\nWhat are you looking for?").trim();
-	// search = search.toLowerCase();
 
 	function checkArray (item) {
 		return item.description == userDescription;
 	}
 	
 	if (storeArray.findIndex(checkArray) >-1) {
-		console.log("Your item is in the store")
+		console.log("Your item is in the store");
 	} else {
 		console.log(userMessages.productNotFound);
 	}
-	
-	
+
 	returnToMain();
 };
 
 var modifyStock = function() {
+	getDescription();
+
+
+	function checkArray (item) {
+		return item.description == userDescription;
+	}
+
+	index = storeArray.findIndex(checkArray);
 	
+	console.log("You have " + storeArray[index].number + " " + storeArray[index].description);
+	var newNumber = sget("New amount in inventory: ").trim();
+
+	storeArray[index].number = newNumber;
+
+	returnToMain();
+
 };
 
 var modifyDescription = function() {
