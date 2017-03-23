@@ -18,7 +18,7 @@ function Product(description, price, number) {
 
 var mainMenuMessages = {
 					welcome: "\n**********************************************************************\n" +
-								"                                       " +
+								"                            Store Tracker 2000    " +
 								"\n**********************************************************************\n",
 					add: "1. To add a product, press 1 ",
 					delete:"2. To delete a product or press 2 ",
@@ -124,6 +124,7 @@ var deleteItem = function() {
 		}
 	}
 	console.log(storeArray);
+	returnToMain();
 };
 
 
@@ -138,6 +139,7 @@ var searchItem = function() {
 		console.log("Your item is in the store");
 	} else {
 		console.log(userMessages.productNotFound);
+
 	}
 
 	returnToMain();
@@ -151,18 +153,41 @@ var modifyStock = function() {
 		return item.description == userDescription;
 	}
 
-	index = storeArray.findIndex(checkArray);
-	
-	console.log("You have " + storeArray[index].number + " " + storeArray[index].description);
-	var newNumber = sget("New amount in inventory: ").trim();
+	if (storeArray.findIndex(checkArray) >-1) {
+		var index = storeArray.findIndex(checkArray);
+		
+		console.log("You have " + storeArray[index].number + " " + storeArray[index].description);
+		var newNumber = sget("New amount in inventory: ").trim();
 
-	storeArray[index].number = newNumber;
+		storeArray[index].number = newNumber;
+	} else {
+		console.log(userMessages.productNotFound);
+	}
 
 	returnToMain();
 
 };
 
 var modifyDescription = function() {
+	getDescription();
+
+
+	function checkArray (item) {
+		return item.description == userDescription;
+	}
+
+
+	if (storeArray.findIndex(checkArray) >-1) {
+		var find = storeArray.findIndex(checkArray);
+		
+		var newDescription = sget("New product description: ").trim();
+
+		storeArray[find].description = newDescription;
+	} else {
+		console.log(userMessages.productNotFound);
+	}
+
+	returnToMain();
 
 };
 
