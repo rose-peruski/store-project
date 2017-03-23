@@ -139,7 +139,13 @@ var searchItem = function() {
 		return item.description == userDescription;
 	}
 	
-	console.log(storeArray.find(checkArray));
+	if (storeArray.findIndex(checkArray) >-1) {
+		console.log("Your item is in the store")
+	} else {
+		console.log(userMessages.productNotFound);
+	}
+	
+	
 	returnToMain();
 };
 
